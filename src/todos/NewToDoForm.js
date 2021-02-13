@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import './NewToDoForm.cs'
+import './NewToDoForm.css'
 
 const NewToDoForm = () => {
-  const [inputValue, setInputValue] = useState;
-  ("");
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <div className="new-todo-form">
