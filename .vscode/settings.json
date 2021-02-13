@@ -11,5 +11,7 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
     "typescript.format.insertSpaceAfterTypeAssertion": true,
     "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "editor.trimAutoWhitespace": false
+    "editor.trimAutoWhitespace": false,
+    "editor.cursorStyle": "underline",
+    "editor.wordWrap": "wordWrapColumn"
 }
