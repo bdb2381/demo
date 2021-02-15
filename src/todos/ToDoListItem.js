@@ -1,7 +1,8 @@
 import React from "react";
 import './ToDoListItem.css'
 
-const ToDoListItem = ({ todo }) => (
+const ToDoListItem = ({ todo }) => {
+  return(
   <div className="todo-item-container">
     <h3>{todo.text}</h3>
     <div className="buttons-container">
@@ -13,6 +14,6 @@ const ToDoListItem = ({ todo }) => (
       </button>
     </div>
   </div>
-)
+)}
 
 export default ToDoListItem
