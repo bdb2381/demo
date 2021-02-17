@@ -1,18 +1,38 @@
 import React from "react";
 import ToDoListItem from "./ToDoListItem";
 import NewToDoForm from "./NewToDoForm"
+import { connect } from 'react-redux'
+import { removeToDo } from './actions'
 import "./ToDoList.css";
 
-const ToDoList = ({ todos = [{text: 'Hello'}] }) => {
-  // debugger
+const ToDoList = ({ toDos = [], onRemovePressed }) => {
+console.log("ToDoList comp", toDos)
   return (
-  <div className="list-wrapper">
-    <NewToDoForm />
+    <div className="list-wrapper">
+      <NewToDoForm />
 
-    {todos.map((todo, i) => (
-      <ToDoListItem todo={todo} key={i} />
-    ))}
-  </div>
-);}
+      {toDos.map((toDo, i) => {
+        return (
+        <ToDoListItem 
+          toDo={toDo}
+          key={i}
+          onRemovePressed={onRemovePressed}  
+        />
+        )}
+      )}
+    </div>
+  );
+}
 
-export default ToDoList;
+
+const mapStateToProps = state => ({
+  toDos: state.toDos,
+})
+
+const mapDispatchToProps = dispatch => (
+  {
+    onRemovePressed: text => dispatch(removeToDo(text))
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);
