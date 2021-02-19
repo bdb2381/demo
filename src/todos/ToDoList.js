@@ -2,11 +2,21 @@ import React from "react";
 import ToDoListItem from "./ToDoListItem";
 import NewToDoForm from "./NewToDoForm"
 import { connect } from 'react-redux'
-import { removeToDo } from './actions'
+import {
+  removeToDo,
+  markToDoAsComplete,
+} from './actions' // action creators, used in mapDispatch
 import "./ToDoList.css";
 
-const ToDoList = ({ toDos = [], onRemovePressed }) => {
-console.log("ToDoList comp", toDos)
+
+const ToDoList = ({
+  toDos = [],
+  onRemovePressed,
+  markComplete
+}) => {
+
+  console.log("ToDoList comp", toDos)
+
   return (
     <div className="list-wrapper">
       <NewToDoForm />
@@ -16,7 +26,8 @@ console.log("ToDoList comp", toDos)
         <ToDoListItem 
           toDo={toDo}
           key={i}
-          onRemovePressed={onRemovePressed}  
+          onRemovePressed={ onRemovePressed }  
+          markComplete={markComplete}
         />
         )}
       )}
@@ -31,7 +42,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => (
   {
-    onRemovePressed: text => dispatch(removeToDo(text))
+    onRemovePressed: text => dispatch(removeToDo(text)),
+    markComplete: text => dispatch(markToDoAsComplete(text))
   }
 )
 
