@@ -27,7 +27,7 @@ const ToDoList = ({
           toDo={toDo}
           key={i}
           onRemovePressed={ onRemovePressed }  
-          markComplete={markComplete}
+          markComplete={ markComplete } 
         />
         )}
       )}
