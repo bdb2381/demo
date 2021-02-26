@@ -7,6 +7,7 @@ import {
   LOAD_TODOS_FAILURE,  
 } from "./actions";
 
+
 export const isLoading = (state = false, action) => {
   const {
     type,
@@ -24,7 +25,7 @@ export const isLoading = (state = false, action) => {
     case LOAD_TODOS_FAILURE: {
       return false 
     }
-    defualt: {
+    default: {
       return state
     }
   }

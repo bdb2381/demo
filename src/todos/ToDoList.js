@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ToDoListItem from "./ToDoListItem";
 import NewToDoForm from "./NewToDoForm"
 import { connect } from 'react-redux'
-import {displayAlert} from './thunks'
+import {
+  displayAlert,
+  loadToDos,
+} from './thunks'
 import {
   removeToDo,
   markToDoAsComplete,
@@ -14,11 +17,17 @@ const ToDoList = ({
   toDos = [],
   onRemovePressed,
   markComplete,
+  isLoading,
+  startLoadingToDos,
 }) => {
+  
+  useEffect(() => {
+    startLoadingToDos()
+  }, [])
+  
+  const loadingMessage = <div>"Loading To Dos...."</div>
 
-  console.log("ToDoList comp", toDos)
-
-  return (
+  const content = (
     <div className="list-wrapper">
       <NewToDoForm />
 
@@ -34,11 +43,14 @@ const ToDoList = ({
       )}
     </div>
   );
+  
+  return isLoading ? loadingMessage : content
 }
 
 
 const mapStateToProps = state => ({
   toDos: state.toDos,
+  isLoading: state.isLoading,
 })
 
 const mapDispatchToProps = dispatch => (
@@ -46,6 +58,7 @@ const mapDispatchToProps = dispatch => (
     onRemovePressed: (text) => dispatch(removeToDo(text)),
     markComplete: (text) => dispatch(markToDoAsComplete(text)),
     onDisplayAlertClicked: (text) => dispatch(displayAlert(text)),
+    startLoadingToDos: () => dispatch(loadToDos()),
   }
 )
 
