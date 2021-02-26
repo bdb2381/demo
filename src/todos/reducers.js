@@ -2,7 +2,34 @@ import {
   CREATE_TODO,
   REMOVE_TODO,
   ISCOMPLETED_TODO,
+  LOAD_TODOS_IN_PROGRESS,
+  LOAD_TODOS_SUCCESS,
+  LOAD_TODOS_FAILURE,  
 } from "./actions";
+
+export const isLoading = (state = false, action) => {
+  const {
+    type,
+    payload,
+  } = action
+
+  switch (type) {
+    case LOAD_TODOS_IN_PROGRESS: {
+      return true
+    }
+
+    case LOAD_TODOS_SUCCESS: {
+      return false
+    }
+    case LOAD_TODOS_FAILURE: {
+      return false 
+    }
+    defualt: {
+      return state
+    }
+  }
+}
+
 
 export const toDos = (state = [], action) => {
   const { 
@@ -34,8 +61,7 @@ export const toDos = (state = [], action) => {
         return toDo
       })
     }
-      
-      
+            
     default:
       return state;
   }
