@@ -2,6 +2,7 @@ import React from "react";
 import ToDoListItem from "./ToDoListItem";
 import NewToDoForm from "./NewToDoForm"
 import { connect } from 'react-redux'
+import {displayAlert} from './thunks'
 import {
   removeToDo,
   markToDoAsComplete,
@@ -12,7 +13,7 @@ import "./ToDoList.css";
 const ToDoList = ({
   toDos = [],
   onRemovePressed,
-  markComplete
+  markComplete,
 }) => {
 
   console.log("ToDoList comp", toDos)
@@ -42,8 +43,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => (
   {
-    onRemovePressed: text => dispatch(removeToDo(text)),
-    markComplete: text => dispatch(markToDoAsComplete(text))
+    onRemovePressed: (text) => dispatch(removeToDo(text)),
+    markComplete: (text) => dispatch(markToDoAsComplete(text)),
+    onDisplayAlertClicked: (text) => dispatch(displayAlert(text)),
   }
 )
 
