@@ -13,9 +13,9 @@ export const createToDo = (toDo) => ({
   payload: { toDo },
 });
 
-export const removeToDo = (text) => ({    
+export const removeToDo = (id) => ({    
   type: REMOVE_TODO,
-  payload: {text}
+  payload: {id}
 }); 
 
 export const markToDoAsComplete = (text) => ({      

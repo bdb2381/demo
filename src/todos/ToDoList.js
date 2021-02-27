@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import {
   displayAlert,
   loadToDos,
+  deleteToDo,
 } from './thunks'
 import {
-  removeToDo,
   markToDoAsComplete,
 } from './actions' // action creators, used in mapDispatch
 import "./ToDoList.css";
@@ -55,7 +55,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => (
   {
-    onRemovePressed: (text) => dispatch(removeToDo(text)),
+    onRemovePressed: (id) => dispatch(deleteToDo(id)),
     markComplete: (text) => dispatch(markToDoAsComplete(text)),
     onDisplayAlertClicked: (text) => dispatch(displayAlert(text)),
     startLoadingToDos: () => dispatch(loadToDos()),

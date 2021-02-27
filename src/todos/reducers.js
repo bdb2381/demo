@@ -45,8 +45,8 @@ export const toDos = (state = [], action) => {
     }
     
     case REMOVE_TODO: {
-      const {text} = payload
-      return state.filter(toDo => toDo.text !== text)        
+      const {id} = payload
+      return state.filter(toDo => toDo.id !== id)        
     }
     
     case ISCOMPLETED_TODO: {

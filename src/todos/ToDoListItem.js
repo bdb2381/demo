@@ -24,7 +24,7 @@ const ToDoListItem = ({
       </button>}
       <button 
         className="remove-button"
-        onClick={ () => onRemovePressed(toDo.text)}
+        onClick={ () => onRemovePressed(toDo.id)}
       >
         Remove
       </button>
