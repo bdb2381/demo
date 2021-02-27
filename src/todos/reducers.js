@@ -40,12 +40,8 @@ export const toDos = (state = [], action) => {
 
   switch (type) {
     case CREATE_TODO: {
-      const {text} = payload
-      const newToDo = {
-        text,
-        isCompleted: false
-      }
-      return state.concat(newToDo)
+      const {toDo} = payload
+      return state.concat(toDo)
     }
     
     case REMOVE_TODO: {
@@ -62,7 +58,14 @@ export const toDos = (state = [], action) => {
         return toDo
       })
     }
-            
+    
+    case LOAD_TODOS_SUCCESS: {
+      const { toDos } = payload
+      return toDos
+    }
+    
+    case LOAD_TODOS_FAILURE:            
+    case LOAD_TODOS_IN_PROGRESS:
     default:
       return state;
   }

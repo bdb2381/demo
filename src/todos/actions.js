@@ -8,9 +8,9 @@ export const LOAD_TODOS_FAILURE = 'LOAD_TODOS_FAILURE'
 
 
 // ACTION CREATORS used in connected components 
-export const createToDo = (text) => ({
+export const createToDo = (toDo) => ({
   type: CREATE_TODO,
-  payload: { text },
+  payload: { toDo },
 });
 
 export const removeToDo = (text) => ({    

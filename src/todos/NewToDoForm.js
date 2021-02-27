@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux'
-import { createToDo } from './actions'
+import { addToDoRequest } from './thunks'
 import './NewToDoForm.css'
 
 const NewToDoForm = ({toDos, onCreatePressed}) => {
@@ -34,11 +34,11 @@ const NewToDoForm = ({toDos, onCreatePressed}) => {
 };
 
 const mapStateToProps = state => ({
-  toDos: state.toDos, 
+  toDos: state.toDos
 })
 
 const mapDispatchToProps = dispatch => ({
-  onCreatePressed: text => dispatch(createToDo(text)),
+  onCreatePressed: text => dispatch(addToDoRequest(text)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewToDoForm)
