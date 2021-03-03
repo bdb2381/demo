@@ -2,6 +2,8 @@ import {
   CREATE_TODO,
   REMOVE_TODO,
   ISCOMPLETED_TODO,
+  ISCOMPLETED_TODO_STARTED,
+  ISCOMPLETED_TODO_FAILED,
   LOAD_TODOS_IN_PROGRESS,
   LOAD_TODOS_SUCCESS,
   LOAD_TODOS_FAILURE,  
@@ -48,14 +50,11 @@ export const toDos = (state = [], action) => {
       const {id} = payload
       return state.filter(toDo => toDo.id !== id)        
     }
-    
-      
-      
       
     case ISCOMPLETED_TODO: {
       const { completedToDo } = payload
       return state.map(toDo => {
-        if (toDo === completedToDo) {
+        if (toDo.id === completedToDo.id) {
           return {...toDo, isCompleted: true}
         }
         return toDo
@@ -68,6 +67,7 @@ export const toDos = (state = [], action) => {
     }
 
     case ISCOMPLETED_TODO_STARTED:
+    case ISCOMPLETED_TODO_FAILED:
     case LOAD_TODOS_FAILURE:            
     case LOAD_TODOS_IN_PROGRESS:
     default:

@@ -74,7 +74,7 @@ export const markCompletedThunk = (id) => async (dispatch) => {
       body,
     })
     
-    const compeletedToDo = response.json()
+    const compeletedToDo = await response.json()
 
     dispatch(markToDoAsComplete(compeletedToDo))
     

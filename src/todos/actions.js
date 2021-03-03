@@ -24,6 +24,9 @@ export const markToDoAsCompleteStarted = () => ({
   type: ISCOMPLETED_TODO_STARTED
 })
 
+export const markToDoAsCompleteFailed = () => ({
+  type: ISCOMPLETED_TODO_FAILED
+})
 
 export const markToDoAsComplete = (completedToDo) => ({      
   type: ISCOMPLETED_TODO,   
