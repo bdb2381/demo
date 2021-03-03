@@ -50,9 +50,9 @@ export const toDos = (state = [], action) => {
     }
     
     case ISCOMPLETED_TODO: {
-      const { text } = payload
+      const { completedToDo } = payload
       return state.map(toDo => {
-        if (toDo.text === text) {
+        if (toDo === completedToDo) {
           return {...toDo, isCompleted: true}
         }
         return toDo

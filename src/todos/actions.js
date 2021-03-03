@@ -18,9 +18,9 @@ export const removeToDo = (id) => ({
   payload: {id}
 }); 
 
-export const markToDoAsComplete = (text) => ({      
+export const markToDoAsComplete = (completedToDo) => ({      
   type: ISCOMPLETED_TODO,   
-  payload: {text}
+  payload: {completedToDo}
 })
 
 export const loadToDosInProgress = () => ({

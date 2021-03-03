@@ -6,6 +6,7 @@ import {
   displayAlert,
   loadToDos,
   deleteToDo,
+  markCompletedThunk,
 } from './thunks'
 import {
   markToDoAsComplete,
@@ -56,9 +57,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => (
   {
     onRemovePressed: (id) => dispatch(deleteToDo(id)),
-    markComplete: (text) => dispatch(markToDoAsComplete(text)),
+    markComplete: (id) => dispatch(markCompletedThunk(id)),
+    // markComplete: (text) => dispatch(markToDoAsComplete(text)),
     onDisplayAlertClicked: (text) => dispatch(displayAlert(text)),
     startLoadingToDos: () => dispatch(loadToDos()),
+    // onCompletedPressed: () => 
   }
 )
 

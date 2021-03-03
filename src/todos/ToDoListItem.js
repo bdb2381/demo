@@ -18,7 +18,7 @@ const ToDoListItem = ({
           ? null 
           : <button
               className="completed-button"
-              onClick={ () => markComplete(toDo.text) }
+              onClick={ () => markComplete(toDo.id) }
             >
         Mark Completed
       </button>}

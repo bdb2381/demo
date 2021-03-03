@@ -4,6 +4,7 @@ import {
   loadToDosFailure,
   createToDo,
   removeToDo,
+  markToDoAsComplete,
 } from './actions'
 
 export const displayAlert = (text) => () => {
@@ -32,7 +33,7 @@ export const addToDoRequest = (text) => async (dispatch, getState) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      method: 'post',
+      method: 'POST',
       body,
     })
     
@@ -58,4 +59,27 @@ export const deleteToDo = (id) => async (dispatch) => {
   catch (error) {
     dispatch(displayAlert(error))
   }
+}
+
+export const markCompletedThunk = (id) => async (dispatch) => {
+
+  try {
+    const dataToUpdate = {id, isCompleted: true }
+    const body = JSON.stringify(dataToUpdate)
+    const response = await fetch(`http://localhost:8080/todos/${id}/completed`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body,
+    })
+    
+    const compeletedToDo = response.json()
+
+    dispatch(markToDoAsComplete(compeletedToDo))
+    
+  } catch (error) {
+    
+  }
+  
 }
