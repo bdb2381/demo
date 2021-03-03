@@ -9,8 +9,9 @@ import {
   markCompletedThunk,
 } from './thunks'
 import {
-  markToDoAsComplete,
-} from './actions' // action creators, used in mapDispatch
+  getToDos,
+  getToDosLoading,
+} from './selectors'
 import "./ToDoList.css";
 
 
@@ -50,8 +51,8 @@ const ToDoList = ({
 
 
 const mapStateToProps = state => ({
-  toDos: state.toDos,
-  isLoading: state.isLoading,
+  toDos: getToDos(state),
+  isLoading: getToDosLoading(state)
 })
 
 const mapDispatchToProps = dispatch => (

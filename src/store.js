@@ -17,7 +17,7 @@ import {
 
 const reducers = {
   toDos,
-  isLoading
+  // isLoading
 };
 
 

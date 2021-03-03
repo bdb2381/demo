@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { connect } from 'react-redux'
-import { addToDoRequest } from './thunks'
-import './NewToDoForm.css'
+import { connect } from "react-redux";
+import { addToDoRequest } from "./thunks";
+import { getToDos } from "./selectors";
+import "./NewToDoForm.css";
 
-const NewToDoForm = ({toDos, onCreatePressed}) => {
+const NewToDoForm = ({ toDos, onCreatePressed }) => {
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -15,30 +16,30 @@ const NewToDoForm = ({toDos, onCreatePressed}) => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <button 
+      <button
         className="new-todo-button"
         onClick={() => {
-            const isDuplicateText = 
-              toDos.some(toDo => toDo.text === inputValue)
-            if (!isDuplicateText){
-              onCreatePressed(inputValue) 
-              setInputValue('') 
-            }
+          const isDuplicateText = toDos.some(
+            (toDo) => toDo.text === inputValue
+          );
+          if (!isDuplicateText) {
+            onCreatePressed(inputValue);
+            setInputValue("");
           }
-        }
+        }}
       >
-          Create Your To Do
+        Create Your To Do
       </button>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  toDos: state.toDos
-})
+const mapStateToProps = (state) => ({
+  toDos: getToDos(state),
+});
 
-const mapDispatchToProps = dispatch => ({
-  onCreatePressed: text => dispatch(addToDoRequest(text)),
-})
+const mapDispatchToProps = (dispatch) => ({
+  onCreatePressed: (text) => dispatch(addToDoRequest(text)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewToDoForm)
+export default connect(mapStateToProps, mapDispatchToProps)(NewToDoForm);
