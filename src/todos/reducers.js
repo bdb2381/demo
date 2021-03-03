@@ -49,6 +49,9 @@ export const toDos = (state = [], action) => {
       return state.filter(toDo => toDo.id !== id)        
     }
     
+      
+      
+      
     case ISCOMPLETED_TODO: {
       const { completedToDo } = payload
       return state.map(toDo => {
@@ -63,7 +66,8 @@ export const toDos = (state = [], action) => {
       const { toDos } = payload
       return toDos
     }
-    
+
+    case ISCOMPLETED_TODO_STARTED:
     case LOAD_TODOS_FAILURE:            
     case LOAD_TODOS_IN_PROGRESS:
     default:
