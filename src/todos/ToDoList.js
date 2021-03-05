@@ -11,12 +11,15 @@ import {
 import {
   getToDos,
   getToDosLoading,
+  getIncompleteToDos,
+  getCompletedToDos,
 } from './selectors'
 import "./ToDoList.css";
 
 
 const ToDoList = ({
-  toDos = [],
+  toDosIncomplete,
+  toDosCompleted,
   onRemovePressed,
   markComplete,
   isLoading,
@@ -33,16 +36,34 @@ const ToDoList = ({
     <div className="list-wrapper">
       <NewToDoForm />
 
-      {toDos.map((toDo, i) => {
+      <h3>To Dos Remaining</h3>
+      {toDosIncomplete.map((toDo, i) => {
+        return (
+          <ToDoListItem
+            toDo={toDo}
+            key={i}
+            onRemovePressed={ onRemovePressed }
+            markComplete={ markComplete } 
+         />
+        )
+      })}
+      
+      <h3>Completed ToDos</h3>
+      {toDosCompleted.map((toDo, i) => {
         return (
         <ToDoListItem 
           toDo={toDo}
           key={i}
           onRemovePressed={ onRemovePressed }  
-          markComplete={ markComplete } 
         />
         )}
       )}
+      
+      
+      
+      
+      
+      
     </div>
   );
   
@@ -51,7 +72,8 @@ const ToDoList = ({
 
 
 const mapStateToProps = state => ({
-  toDos: getToDos(state),
+  toDosCompleted: getCompletedToDos(state),
+  toDosIncomplete: getIncompleteToDos(state),
   isLoading: getToDosLoading(state)
 })
 
