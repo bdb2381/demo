@@ -55,7 +55,7 @@ export const toDos = (state = initialState, action) => {
       const {id} = payload
       return {
         ...state,
-        dat: state.data.filter(toDo => toDo.id !== id)
+        data: state.data.filter(toDo => toDo.id !== id)
       }
     }
       
