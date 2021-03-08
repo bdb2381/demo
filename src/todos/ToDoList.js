@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import ToDoListItem from "./ToDoListItem";
+import styled from 'styled-components'
 import NewToDoForm from "./NewToDoForm"
 import { connect } from 'react-redux'
 import {
@@ -9,13 +10,15 @@ import {
   markCompletedThunk,
 } from './thunks'
 import {
-  getToDos,
   getToDosLoading,
   getIncompleteToDos,
   getCompletedToDos,
 } from './selectors'
-import "./ToDoList.css";
 
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
 const ToDoList = ({
   toDosIncomplete,
@@ -33,7 +36,7 @@ const ToDoList = ({
   const loadingMessage = <div>"Loading To Dos...."</div>
 
   const content = (
-    <div className="list-wrapper">
+<ListWrapper>
       <NewToDoForm />
 
       <h3>To Dos Remaining</h3>
@@ -64,7 +67,7 @@ const ToDoList = ({
       
       
       
-    </div>
+    </ListWrapper>
   );
   
   return isLoading ? loadingMessage : content
