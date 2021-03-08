@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import './ToDoListItem.css'
 
 const ItemContainer = styled.div`
   background: white;
@@ -53,13 +52,11 @@ const ToDoListItem = ({
         { toDo.isCompleted 
           ? null 
           : <CompletedButton
-              className="completed-button"
               onClick={ () => markComplete(toDo.id) }
             >
         Mark Completed
       </CompletedButton>}
       <RemoveButton 
-        className="remove-button"
         onClick={ () => onRemovePressed(toDo.id)}
       >
         Remove

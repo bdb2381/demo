@@ -62,11 +62,6 @@ const ToDoList = ({
         )}
       )}
       
-      
-      
-      
-      
-      
     </ListWrapper>
   );
   
