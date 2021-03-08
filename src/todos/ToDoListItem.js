@@ -15,11 +15,27 @@ const ButtonsContainer = styled.div`
   right: 12px;
   top: 12px;
 `
-const Button = styled.button`
+const CompletedButton = styled.button`
   font-size: 16px;
   padding: 8px;
   border: none;
   border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #22ee22;
+`
+
+const RemoveButton = styled.button`
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  background-color: red;
+  margin-left: 8px;
 `
 
 const ToDoListItem = ({
@@ -36,18 +52,18 @@ const ToDoListItem = ({
     <ButtonsContainer>
         { toDo.isCompleted 
           ? null 
-          : <button
+          : <CompletedButton
               className="completed-button"
               onClick={ () => markComplete(toDo.id) }
             >
         Mark Completed
-      </button>}
-      <button 
+      </CompletedButton>}
+      <RemoveButton 
         className="remove-button"
         onClick={ () => onRemovePressed(toDo.id)}
       >
         Remove
-      </button>
+      </RemoveButton>
     </ButtonsContainer>
     
     </ItemContainer>
