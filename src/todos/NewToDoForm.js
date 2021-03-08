@@ -31,8 +31,7 @@ const NewToDoButton = styled.button`
   outline: none;
   cursor: pointer;
   margin-left: 8px;
-  width: 20%;
-  background-color: green;
+  background-color: #22ee22;
 `
 
 const NewToDoForm = ({ toDos, onCreatePressed }) => {
