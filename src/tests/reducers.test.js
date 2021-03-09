@@ -31,33 +31,33 @@ describe("The toDos Reducer", () => {
   })
 })
 
-describe("The ISCOMPLETED_TODO reducer:", () => {
-  it("Marks a toDo as completed", () => {
-    const toDo = {
-      text: "Learn about React Ecosystems",
-      isCompleted: false,
-    }
-    const completedToDo = {
-      text: "Learn about React Ecosystems",
-      isCompleted: true,
-    }
-    const fakeAction = {
-      type: "ISCOMPLETED_TODO",
-      payload: toDo
+// describe("The ISCOMPLETED_TODO reducer:", () => {
+//   it("Marks a toDo as completed", () => {
+//     const toDo = {
+//       text: "Learn about React Ecosystems",
+//       isCompleted: false,
+//     }
+//     const completedToDo = {
+//       text: "Learn about React Ecosystems",
+//       isCompleted: true,
+//     }
+//     const fakeAction = {
+//       type: "ISCOMPLETED_TODO",
+//       payload: toDo
       
-    }
-    const originalState = {
-      data: [toDo]
-    }
-    const expected = {
-      data: [completedToDo],
-    }
-    const actual = toDos(
-      originalState,
-      fakeAction
-    )
+//     }
+//     const originalState = {
+//       data: [toDo]
+//     }
+//     const expected = {
+//       data: [completedToDo],
+//     }
+//     const actual = toDos(
+//       originalState,
+//       fakeAction
+//     )
     
-    expect(actual).to.equal(expected)
-    
-  }) 
-})
+//     expect(actual).to.equal(expected)
+//     actual.should.have.property('toDo')
+//   }) 
+// })
