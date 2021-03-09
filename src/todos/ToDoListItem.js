@@ -4,21 +4,26 @@ import styled from 'styled-components'
 const ItemContainer = styled.div`
   background: white;
   border-radius: 8px;
-  border-bottom: ${props =>
-    (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
-    ? 'none'
-    : '2px solid red')};
   margin-top: 8px;
   padding: 16px;
   position: relative;
   box-shadow: 0 4px 8px grey;
 `
+const ToDoItemContainerWithWarning = styled(ItemContainer)`
+  border-bottom: ${ props =>
+  (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
+    ? 'none'
+    : '2px solid red') };
+`;
+
 
 const ButtonsContainer = styled.div`
   position: absolute;
   right: 12px;
   top: 12px;
 `
+
+
 
 const CompletedButton = styled.button`
   font-size: 16px;
@@ -49,9 +54,12 @@ const ToDoListItem = ({
   markComplete,
 }) => {
   
+  const Container = toDo.isCompleted
+    ? ItemContainer
+    : ToDoItemContainerWithWarning
   
   return(
-    <ItemContainer
+    <Container
       createdAt={ toDo.createdAt }>
       <h3>{toDo.text}</h3>
       <p>
@@ -75,7 +83,7 @@ const ToDoListItem = ({
         </RemoveButton>
       </ButtonsContainer>
       
-    </ItemContainer>
+    </Container>
   )
 }
 
