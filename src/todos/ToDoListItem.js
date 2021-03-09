@@ -21,7 +21,7 @@ const ButtonsContainer = styled.div`
   position: absolute;
   right: 12px;
   top: 12px;
-`
+`;
 
 const Button = styled.button`
   font-size: 16px;
@@ -31,17 +31,16 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   display: inline-block;
-`
-
+`;
 
 const CompletedButton = styled(Button)`
   background-color: #22ee22;
-`
+`;
 
 const RemoveButton = styled(Button)`
   background-color: red;
   margin-left: 8px;
-`
+`;
 
 const ToDoListItem = ({
   toDo,
