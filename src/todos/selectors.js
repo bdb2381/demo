@@ -3,8 +3,8 @@ import {createSelector} from 'reselect'
 export const getToDos = (state) => state.toDos.data
 export const getToDosLoading = (state) => state.toDos.isLoading
 
-//HIGHER ORDER SELECTORS
 
+//HIGHER ORDER SELECTORS
 export const getIncompleteToDos = createSelector(
   getToDos, // first call
   getToDosLoading, // second call

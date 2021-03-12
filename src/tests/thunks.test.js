@@ -1,7 +1,10 @@
 import 'node-fetch'
 import fetchMock from 'fetch-mock'
 import { expect } from 'chai'
-import {loadToDos} from '../todos/thunks'
+import {
+  loadToDos,
+  markCompletedThunk
+} from '../todos/thunks'
 import sinon from 'sinon'
 
 
@@ -10,7 +13,7 @@ import sinon from 'sinon'
 
 
 describe("The loadToDos thunk:", () => {
-  it("Dispatches the correct actions in the sucess scenario", async () => {
+  it("Dispatches the correct actions in the success scenario", async () => {
     const fakeDispatch = sinon.spy()
     
     const fakeToDos = [{text: "1"}, {text: "2"}]
@@ -32,5 +35,35 @@ describe("The loadToDos thunk:", () => {
     fetchMock.reset()
     
   })
-} )
+})
 
+
+describe("The markCompletd thunk:", () => {
+  it("Dispatchs the correct actions to mark toDo as completed", async () => {
+    const fakeDispatch = sinon.spy() 
+    const fakeID = 111
+    
+    const fakeToDo = { fakeID, isCompleted: true }
+    
+    fetchMock.post(
+      `http://localhost:8080/todos/${ fakeID }/completed`,
+      fakeToDo
+    )
+    
+    // const expectedAction = {
+    //   type: "ISCOMPLETED_TODO",
+    //   payload: {
+    //     toDos: fakeToDo,
+    //   },
+    // }
+    
+    
+    await markCompletedThunk(fakeID)(fakeDispatch)
+    console.log("Something:", fakeDispatch.getCall(0).args[ 0 ])
+    console.log(fakeDispatch.getCall(0))
+    // expect(fakeDispatch.getCall(0).args[0]).to.deep.equal(expectedAction)
+
+    fetchMock.reset()
+
+    })
+})
