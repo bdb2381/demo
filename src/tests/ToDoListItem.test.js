@@ -10,12 +10,17 @@ describe("The ToDoListItem styled component getBorderStyleForDate:", () => {
     const actual = getBorderStyleForDate(recentDate, today)
     
     expect(actual).to.equal(expected)
-    
-    
+        
   }) 
   
   it("Returns a border if date is more then 5 days ago", () => {
+    const today = Date.now()
+    const futureDate = new Date(Date.now() - 86400000 * 6) // 6 days
     
+    const expected =  "2px solid red"
+    const actual = getBorderStyleForDate(futureDate, today)
+    
+    expect(actual).to.equal(expected)
   })
   
   
